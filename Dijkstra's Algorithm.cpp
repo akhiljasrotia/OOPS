@@ -8,6 +8,7 @@ int main()
 	int n;
 	cout<<"Enter the size of the matrix ";
 	cin>>n;
+	cout<<endl;
 
 	int i,j;
 	int matrix[n][n];
@@ -28,9 +29,15 @@ int main()
 				 		{
 				 			matrix[i][j]=INT_MAX;
 				 		}
+
 				}
+				cout<<endl<<endl;
 		}
 
+
+		cout<<endl;
+
+		cout<<"The input matrix is :"<<endl;
 	for(i=0;i<n;i++)
 		{
 			for(j=0;j<n;j++)
@@ -47,8 +54,11 @@ int main()
 
 		int source;
 
+		cout<<endl;
 		cout<<"Enter the source ";
 		cin>>source;
+		cout<<endl;
+
 
 		int s[n],d[n];
 		for(i=0;i<n;i++)
@@ -56,21 +66,20 @@ int main()
 					s[i]=0;
 					d[i]=matrix[source][i];
 				}
-				s[source]=1;
 				d[source]=0;
 
 
 
-			int min=INT_MAX,pos;
 
-			for(i=1;i<n-1;i++)
+			for(i=0;i<n;i++)
 					{
-							for(int j=0;j<n;j++)
+						int min=INT_MAX,pos;
+						for(int j=0;j<n;j++)
 						{
-								if(d[i]<min && s[i]==0)
+								if(d[j]<min && s[j]==0)
 							{
-								min=d[i];
-								pos=i;
+								min=d[j];
+								pos=j;
 							}
 
 						}
@@ -78,16 +87,24 @@ int main()
 						for(int k=0;k<n;k++)
 						{
 
-							if(matrix[pos][k]!=INT_MAX && s[k]==0 && d[k]>d[pos]+matrix[pos][k]) 
+							if(matrix[pos][k]!=INT_MAX && s[k]==0 && d[k]>d[pos]+matrix[pos][k] && d[k]!=INT_MAX) 
 									{
 										d[k]=d[pos]+matrix[pos][k];
 									}
 						}
+						// cout<<"The distance array is \n";
+						// for(i=0;i<n;i++)
+						// {
+
+						// 	cout<<d[i]<<" ";
+						// }
+						// cout<<endl;
 
 
 
 					}
 
+					cout<<"The distance array is \n";
 					for(i=0;i<n;i++)
 					{
 
